@@ -20,7 +20,7 @@ This is a React application that calculates and displays the breakdown of an emp
 
 2. Install dependencies:
     ```bash
-  npm install
+    npm install
 
 3. Run the app:
   ``` bash
