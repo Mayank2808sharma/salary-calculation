@@ -10,7 +10,7 @@ interface Breakdown {
     medicalTax: number;
     totalDeductions: number;
     taxableIncome: number;
-    grossSalary: number; // Added grossSalary for yearly
+    grossSalary: number;
   };
   monthly: {
     basic: number;
@@ -21,12 +21,12 @@ interface Breakdown {
     medicalTax: number;
     totalDeductions: number;
     taxableIncome: number;
-    grossSalary: number; // Added grossSalary for monthly
+    grossSalary: number;
   };
 }
 
 const SalaryBreakdown: React.FC = () => {
-  const [totalSalary, setTotalSalary] = useState<number>(0);
+  const [totalSalary, setTotalSalary] = useState<string>(""); // Use string to handle formatted input
   const [medicalTax, setMedicalTax] = useState<number>(600); // Default value of ₹600
   const [breakdown, setBreakdown] = useState<Breakdown | null>(null);
 
@@ -35,9 +35,10 @@ const SalaryBreakdown: React.FC = () => {
   };
 
   const calculateBreakdown = () => {
-    const basic = totalSalary * 0.5;
+    const salary = parseInt(totalSalary.replace(/,/g, ''), 10); // Remove commas and parse as number
+    const basic = salary * 0.5;
     const hra = basic * 0.5;
-    const remaining = totalSalary - (basic + hra);
+    const remaining = salary - (basic + hra);
 
     // Adjusting the split between travel allowance and special allowance
     const travelAllowance = remaining * 0.4; // 40% of remaining salary
@@ -46,7 +47,7 @@ const SalaryBreakdown: React.FC = () => {
     const professionalTax = 2400; // Annual
     const annualMedicalTax = medicalTax * 12; // ₹600 per month or user input annually
     const totalDeductions = professionalTax + annualMedicalTax;
-    const taxableIncome = totalSalary - totalDeductions;
+    const taxableIncome = salary - totalDeductions;
 
     setBreakdown({
       yearly: {
@@ -58,7 +59,7 @@ const SalaryBreakdown: React.FC = () => {
         medicalTax: annualMedicalTax,
         totalDeductions,
         taxableIncome,
-        grossSalary: totalSalary, // Gross Salary added for yearly
+        grossSalary: salary, // Gross Salary added for yearly
       },
       monthly: {
         basic: basic / 12,
@@ -69,9 +70,18 @@ const SalaryBreakdown: React.FC = () => {
         medicalTax: annualMedicalTax / 12,
         totalDeductions: totalDeductions / 12,
         taxableIncome: taxableIncome / 12,
-        grossSalary: totalSalary / 12, // Gross Salary added for monthly
+        grossSalary: salary / 12, // Gross Salary added for monthly
       },
     });
+  };
+
+  const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Remove non-numeric characters except commas
+    const formattedValue = value.replace(/[^0-9]/g, "");
+    // Format the value to Indian currency style
+    const formattedWithCommas = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    setTotalSalary(formattedWithCommas);
   };
 
   return (
@@ -85,10 +95,10 @@ const SalaryBreakdown: React.FC = () => {
           Enter Total Salary:
         </label>
         <input
-          type="number"
+          type="text"
           placeholder="Enter total salary"
-          value={totalSalary || ""}
-          onChange={(e) => setTotalSalary(Number(e.target.value))}
+          value={totalSalary}
+          onChange={handleSalaryChange}
           style={{
             padding: "10px",
             width: "80%",
