@@ -85,12 +85,12 @@ const SalaryBreakdown: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "800px", margin: "auto", textAlign: "center" }}>
+    <div style={{ padding: "20px", maxWidth: "100%", margin: "0 auto", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h2 style={{ fontSize: "36px", fontWeight: "bold", marginBottom: "20px" }}>
         Salary Breakdown Calculator
       </h2>
 
-      <div style={{ marginBottom: "20px", textAlign: "left" }}>
+      <div style={{ marginBottom: "20px", textAlign: "left", width: "100%", maxWidth: "400px" }}>
         <label style={{ fontSize: "18px", display: "block", marginBottom: "5px" }}>
           Enter Total Salary:
         </label>
@@ -101,7 +101,7 @@ const SalaryBreakdown: React.FC = () => {
           onChange={handleSalaryChange}
           style={{
             padding: "10px",
-            width: "80%",
+            width: "100%",
             marginBottom: "20px",
             borderRadius: "4px",
             border: "1px solid #ddd",
@@ -112,7 +112,7 @@ const SalaryBreakdown: React.FC = () => {
         />
       </div>
 
-      <div style={{ marginBottom: "20px", textAlign: "left" }}>
+      <div style={{ marginBottom: "20px", textAlign: "left", width: "100%", maxWidth: "400px" }}>
         <label style={{ fontSize: "18px", display: "block", marginBottom: "5px" }}>
           Enter Medical Tax (monthly):
         </label>
@@ -123,7 +123,7 @@ const SalaryBreakdown: React.FC = () => {
           onChange={(e) => setMedicalTax(Number(e.target.value))}
           style={{
             padding: "10px",
-            width: "80%",
+            width: "100%",
             marginBottom: "20px",
             borderRadius: "4px",
             border: "1px solid #ddd",
@@ -138,7 +138,7 @@ const SalaryBreakdown: React.FC = () => {
         onClick={calculateBreakdown}
         style={{
           padding: "10px",
-          width: "80%",
+          width: "100%",
           backgroundColor: "#007BFF",
           color: "white",
           border: "none",
@@ -153,7 +153,7 @@ const SalaryBreakdown: React.FC = () => {
       </button>
 
       {breakdown && (
-        <div style={{ marginTop: "30px" }}>
+        <div style={{ marginTop: "30px", width: "100%", maxWidth: "900px" }}>
           <h3 style={{ fontSize: "28px", fontWeight: "bold" }}>Yearly Breakdown</h3>
           <div style={{ overflowX: "auto" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "30px" }}>
