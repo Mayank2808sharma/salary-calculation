@@ -19,8 +19,10 @@ This is a React application that calculates and displays the breakdown of an emp
    git clone https://github.com/Mayank2808sharma/salary-calculation
 
 2. Install dependencies:
-  ``` npm install
+    ```bash
+  npm install
 
 3. Run the app:
-  ``` npm run dev
+  ``` bash
+  npm run dev
   
