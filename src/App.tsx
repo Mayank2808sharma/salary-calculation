@@ -30,6 +30,10 @@ const SalaryBreakdown: React.FC = () => {
   const [medicalTax, setMedicalTax] = useState<number>(600); // Default value of ₹600
   const [breakdown, setBreakdown] = useState<Breakdown | null>(null);
 
+  const formatCurrency = (amount: number) => {
+    return amount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' });
+  };
+
   const calculateBreakdown = () => {
     const basic = totalSalary * 0.5;
     const hra = basic * 0.5;
@@ -152,39 +156,39 @@ const SalaryBreakdown: React.FC = () => {
               <tbody>
                 <tr>
                   <td>Basic</td>
-                  <td>{breakdown.yearly.basic.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.yearly.basic)}</td>
                 </tr>
                 <tr>
                   <td>HRA</td>
-                  <td>{breakdown.yearly.hra.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.yearly.hra)}</td>
                 </tr>
                 <tr>
                   <td>Travel Allowance</td>
-                  <td>{breakdown.yearly.travelAllowance.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.yearly.travelAllowance)}</td>
                 </tr>
                 <tr>
                   <td>Special Allowance</td>
-                  <td>{breakdown.yearly.specialAllowance.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.yearly.specialAllowance)}</td>
                 </tr>
                 <tr>
                   <td>Professional Tax</td>
-                  <td>{breakdown.yearly.professionalTax.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.yearly.professionalTax)}</td>
                 </tr>
                 <tr>
                   <td>Medical Tax</td>
-                  <td>{breakdown.yearly.medicalTax.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.yearly.medicalTax)}</td>
                 </tr>
                 <tr style={{ fontWeight: "bold" }}>
                   <td>Gross Salary</td>
-                  <td>{breakdown.yearly.grossSalary.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.yearly.grossSalary)}</td>
                 </tr>
                 <tr style={{ fontWeight: "bold" }}>
                   <td>Total Deductions</td>
-                  <td>{breakdown.yearly.totalDeductions.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.yearly.totalDeductions)}</td>
                 </tr>
                 <tr style={{ fontWeight: "bold" }}>
-                  <td>Take Home Income</td>
-                  <td>{breakdown.yearly.taxableIncome.toFixed(2)}</td>
+                  <td>Net Income</td>
+                  <td>{formatCurrency(breakdown.yearly.taxableIncome)}</td>
                 </tr>
               </tbody>
             </table>
@@ -202,39 +206,39 @@ const SalaryBreakdown: React.FC = () => {
               <tbody>
                 <tr>
                   <td>Basic</td>
-                  <td>{breakdown.monthly.basic.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.monthly.basic)}</td>
                 </tr>
                 <tr>
                   <td>HRA</td>
-                  <td>{breakdown.monthly.hra.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.monthly.hra)}</td>
                 </tr>
                 <tr>
                   <td>Travel Allowance</td>
-                  <td>{breakdown.monthly.travelAllowance.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.monthly.travelAllowance)}</td>
                 </tr>
                 <tr>
                   <td>Special Allowance</td>
-                  <td>{breakdown.monthly.specialAllowance.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.monthly.specialAllowance)}</td>
                 </tr>
                 <tr>
                   <td>Professional Tax</td>
-                  <td>{breakdown.monthly.professionalTax.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.monthly.professionalTax)}</td>
                 </tr>
                 <tr>
                   <td>Medical Tax</td>
-                  <td>{breakdown.monthly.medicalTax.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.monthly.medicalTax)}</td>
                 </tr>
                 <tr style={{ fontWeight: "bold" }}>
                   <td>Gross Salary</td>
-                  <td>{breakdown.monthly.grossSalary.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.monthly.grossSalary)}</td>
                 </tr>
                 <tr style={{ fontWeight: "bold" }}>
                   <td>Total Deductions</td>
-                  <td>{breakdown.monthly.totalDeductions.toFixed(2)}</td>
+                  <td>{formatCurrency(breakdown.monthly.totalDeductions)}</td>
                 </tr>
                 <tr style={{ fontWeight: "bold" }}>
-                  <td>Take Home Income</td>
-                  <td>{breakdown.monthly.taxableIncome.toFixed(2)}</td>
+                  <td>Net Income</td>
+                  <td>{formatCurrency(breakdown.monthly.taxableIncome)}</td>
                 </tr>
               </tbody>
             </table>
