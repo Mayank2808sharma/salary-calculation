@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
 import { calculateBreakdown } from "./utils/calculations";
-import { formatCurrency } from "./utils/formatters";
-import { handleCopy } from "./utils/clipboard";
+import YearlyCalcuation from "./components/yearCalculation";
+import MontlyCalculations from "./components/monthlyCalculation";
 interface Breakdown {
   yearly: {
     basic: number;
@@ -29,8 +28,8 @@ interface Breakdown {
 }
 
 const SalaryBreakdown: React.FC = () => {
-  const [totalSalary, setTotalSalary] = useState<string>(""); // Use string to handle formatted input
-  const [medicalTax, setMedicalTax] = useState<number>(600); // Default value of ₹600
+  const [totalSalary, setTotalSalary] = useState<string>("");
+  const [medicalTax, setMedicalTax] = useState<number>(600); 
   const [breakdown, setBreakdown] = useState<Breakdown | null>(null);
 
   const handleCalculate = ()=>{
@@ -115,106 +114,8 @@ const SalaryBreakdown: React.FC = () => {
 
       {breakdown && (
         <div style={{ marginTop: "30px", width: "100%", maxWidth: "900px" }}>
-          <h3 style={{ fontSize: "28px", fontWeight: "bold" }}>Yearly Breakdown</h3>
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "30px" }}>
-              <thead>
-                <tr style={{ backgroundColor: "#f4f4f4", textAlign: "left" }}>
-                  <th>Category</th>
-                  <th>Amount (₹)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Basic</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.yearly.basic))}>{formatCurrency(breakdown.yearly.basic)} <ToastContainer />
-                  </td>
-                </tr>
-                <tr style={{backgroundColor:"#d6d0d0"}}>
-                  <td>HRA</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.yearly.hra))}>{formatCurrency(breakdown.yearly.hra)}<ToastContainer /></td>
-                </tr>
-                <tr>
-                  <td>Special Allowance</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.yearly.specialAllowance))}>{formatCurrency(breakdown.yearly.specialAllowance)}<ToastContainer /></td>
-                </tr>
-                <tr style={{backgroundColor:"#d6d0d0"}}>
-                  <td>Travel Allowance</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.yearly.travelAllowance))}>{formatCurrency(breakdown.yearly.travelAllowance)}<ToastContainer /></td>
-                </tr>
-                <tr>
-                  <td>Professional Tax</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.yearly.professionalTax))}>{formatCurrency(breakdown.yearly.professionalTax)}<ToastContainer /></td>
-                </tr>
-                <tr style={{backgroundColor:"#d6d0d0"}}>
-                  <td>Medical Tax</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.yearly.medicalTax))}>{formatCurrency(breakdown.yearly.medicalTax)}<ToastContainer /></td>
-                </tr>
-                <tr style={{ fontWeight: "bold" }}>
-                  <td>Gross Salary</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.yearly.grossSalary))}>{formatCurrency(breakdown.yearly.grossSalary)}<ToastContainer /></td>
-                </tr>
-                <tr style={{ fontWeight: "bold",backgroundColor:"#d6d0d0" }}>
-                  <td>Total Deductions</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.yearly.totalDeductions))}>{formatCurrency(breakdown.yearly.totalDeductions)}<ToastContainer /></td>
-                </tr>
-                <tr style={{ fontWeight: "bold" }}>
-                  <td>Net Take Home Income</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.yearly.taxableIncome))}>{formatCurrency(breakdown.yearly.taxableIncome)}<ToastContainer /></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 style={{ fontSize: "28px", fontWeight: "bold" }}>Monthly Breakdown</h3>
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr style={{ backgroundColor: "#f4f4f4", textAlign: "left" }}>
-                  <th>Category</th>
-                  <th>Amount (₹)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Basic</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.monthly.basic))}>{formatCurrency(breakdown.monthly.basic)}<ToastContainer /></td>
-                </tr>
-                <tr style={{backgroundColor:"#d6d0d0"}}>
-                  <td>HRA</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.monthly.hra))}>{formatCurrency(breakdown.monthly.hra)}<ToastContainer /></td>
-                </tr>
-                <tr>
-                  <td>Special Allowance</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.monthly.specialAllowance))}>{formatCurrency(breakdown.monthly.specialAllowance)}<ToastContainer /></td>
-                </tr>
-                <tr style={{backgroundColor:"#d6d0d0"}}>
-                  <td>Travel Allowance</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.monthly.travelAllowance))}>{formatCurrency(breakdown.monthly.travelAllowance)}<ToastContainer /></td>
-                </tr>
-                <tr>
-                  <td>Professional Tax</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.monthly.professionalTax))}>{formatCurrency(breakdown.monthly.professionalTax)}<ToastContainer /></td>
-                </tr>
-                <tr style={{backgroundColor:"#d6d0d0"}}>
-                  <td>Medical Tax</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.monthly.medicalTax))}>{formatCurrency(breakdown.monthly.medicalTax)}<ToastContainer /></td>
-                </tr>
-                <tr style={{ fontWeight: "bold" }}>
-                  <td>Gross Salary</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.monthly.grossSalary))}>{formatCurrency(breakdown.monthly.grossSalary)}<ToastContainer /></td>
-                </tr>
-                <tr style={{ fontWeight: "bold", backgroundColor:"#d6d0d0" }}>
-                  <td>Total Deductions</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.monthly.totalDeductions))}>{formatCurrency(breakdown.monthly.totalDeductions)}<ToastContainer /></td>
-                </tr>
-                <tr style={{ fontWeight: "bold" }}>
-                  <td>Net Take Home Income</td>
-                  <td onClick={() => handleCopy(formatCurrency(breakdown.monthly.taxableIncome))}>{formatCurrency(breakdown.monthly.taxableIncome)}<ToastContainer /></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          {<YearlyCalcuation breakdown={breakdown}/>}
+          <MontlyCalculations breakdown={breakdown}/>
         </div>
       )}
     </div>
