@@ -2,35 +2,12 @@ import React, { useState } from "react";
 import { calculateBreakdown } from "./utils/calculations";
 import YearlyCalcuation from "./components/yearCalculation";
 import MontlyCalculations from "./components/monthlyCalculation";
-interface Breakdown {
-  yearly: {
-    basic: number;
-    hra: number;
-    travelAllowance: number;
-    specialAllowance: number;
-    professionalTax: number;
-    medicalTax: number;
-    totalDeductions: number;
-    taxableIncome: number;
-    grossSalary: number;
-  };
-  monthly: {
-    basic: number;
-    hra: number;
-    travelAllowance: number;
-    specialAllowance: number;
-    professionalTax: number;
-    medicalTax: number;
-    totalDeductions: number;
-    taxableIncome: number;
-    grossSalary: number;
-  };
-}
+import BreakdownType from "./interface/breakdownTypes";
 
 const SalaryBreakdown: React.FC = () => {
   const [totalSalary, setTotalSalary] = useState<string>("");
   const [medicalTax, setMedicalTax] = useState<number>(600); 
-  const [breakdown, setBreakdown] = useState<Breakdown | null>(null);
+  const [breakdown, setBreakdown] = useState<BreakdownType | null>(null);
 
   const handleCalculate = ()=>{
     setBreakdown(calculateBreakdown(totalSalary,medicalTax));
