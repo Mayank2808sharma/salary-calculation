@@ -173,12 +173,12 @@ const SalaryBreakdown: React.FC = () => {
                   <td>{formatCurrency(breakdown.yearly.hra)}</td>
                 </tr>
                 <tr>
-                  <td>Travel Allowance</td>
-                  <td>{formatCurrency(breakdown.yearly.travelAllowance)}</td>
-                </tr>
-                <tr>
                   <td>Special Allowance</td>
                   <td>{formatCurrency(breakdown.yearly.specialAllowance)}</td>
+                </tr>
+                <tr>
+                  <td>Travel Allowance</td>
+                  <td>{formatCurrency(breakdown.yearly.travelAllowance)}</td>
                 </tr>
                 <tr>
                   <td>Professional Tax</td>
@@ -197,7 +197,7 @@ const SalaryBreakdown: React.FC = () => {
                   <td>{formatCurrency(breakdown.yearly.totalDeductions)}</td>
                 </tr>
                 <tr style={{ fontWeight: "bold" }}>
-                  <td>Net Income</td>
+                  <td>Net Take Home Income</td>
                   <td>{formatCurrency(breakdown.yearly.taxableIncome)}</td>
                 </tr>
               </tbody>
@@ -223,12 +223,12 @@ const SalaryBreakdown: React.FC = () => {
                   <td>{formatCurrency(breakdown.monthly.hra)}</td>
                 </tr>
                 <tr>
-                  <td>Travel Allowance</td>
-                  <td>{formatCurrency(breakdown.monthly.travelAllowance)}</td>
-                </tr>
-                <tr>
                   <td>Special Allowance</td>
                   <td>{formatCurrency(breakdown.monthly.specialAllowance)}</td>
+                </tr>
+                <tr>
+                  <td>Travel Allowance</td>
+                  <td>{formatCurrency(breakdown.monthly.travelAllowance)}</td>
                 </tr>
                 <tr>
                   <td>Professional Tax</td>
@@ -247,7 +247,7 @@ const SalaryBreakdown: React.FC = () => {
                   <td>{formatCurrency(breakdown.monthly.totalDeductions)}</td>
                 </tr>
                 <tr style={{ fontWeight: "bold" }}>
-                  <td>Net Income</td>
+                  <td>Net Take Home Income</td>
                   <td>{formatCurrency(breakdown.monthly.taxableIncome)}</td>
                 </tr>
               </tbody>
