@@ -168,7 +168,7 @@ const SalaryBreakdown: React.FC = () => {
                   <td>Basic</td>
                   <td>{formatCurrency(breakdown.yearly.basic)}</td>
                 </tr>
-                <tr>
+                <tr style={{backgroundColor:"#d6d0d0"}}>
                   <td>HRA</td>
                   <td>{formatCurrency(breakdown.yearly.hra)}</td>
                 </tr>
@@ -176,7 +176,7 @@ const SalaryBreakdown: React.FC = () => {
                   <td>Special Allowance</td>
                   <td>{formatCurrency(breakdown.yearly.specialAllowance)}</td>
                 </tr>
-                <tr>
+                <tr style={{backgroundColor:"#d6d0d0"}}>
                   <td>Travel Allowance</td>
                   <td>{formatCurrency(breakdown.yearly.travelAllowance)}</td>
                 </tr>
@@ -184,7 +184,7 @@ const SalaryBreakdown: React.FC = () => {
                   <td>Professional Tax</td>
                   <td>{formatCurrency(breakdown.yearly.professionalTax)}</td>
                 </tr>
-                <tr>
+                <tr style={{backgroundColor:"#d6d0d0"}}>
                   <td>Medical Tax</td>
                   <td>{formatCurrency(breakdown.yearly.medicalTax)}</td>
                 </tr>
@@ -192,7 +192,7 @@ const SalaryBreakdown: React.FC = () => {
                   <td>Gross Salary</td>
                   <td>{formatCurrency(breakdown.yearly.grossSalary)}</td>
                 </tr>
-                <tr style={{ fontWeight: "bold" }}>
+                <tr style={{ fontWeight: "bold",backgroundColor:"#d6d0d0" }}>
                   <td>Total Deductions</td>
                   <td>{formatCurrency(breakdown.yearly.totalDeductions)}</td>
                 </tr>
@@ -218,7 +218,7 @@ const SalaryBreakdown: React.FC = () => {
                   <td>Basic</td>
                   <td>{formatCurrency(breakdown.monthly.basic)}</td>
                 </tr>
-                <tr>
+                <tr style={{backgroundColor:"#d6d0d0"}}>
                   <td>HRA</td>
                   <td>{formatCurrency(breakdown.monthly.hra)}</td>
                 </tr>
@@ -226,7 +226,7 @@ const SalaryBreakdown: React.FC = () => {
                   <td>Special Allowance</td>
                   <td>{formatCurrency(breakdown.monthly.specialAllowance)}</td>
                 </tr>
-                <tr>
+                <tr style={{backgroundColor:"#d6d0d0"}}>
                   <td>Travel Allowance</td>
                   <td>{formatCurrency(breakdown.monthly.travelAllowance)}</td>
                 </tr>
@@ -234,7 +234,7 @@ const SalaryBreakdown: React.FC = () => {
                   <td>Professional Tax</td>
                   <td>{formatCurrency(breakdown.monthly.professionalTax)}</td>
                 </tr>
-                <tr>
+                <tr style={{backgroundColor:"#d6d0d0"}}>
                   <td>Medical Tax</td>
                   <td>{formatCurrency(breakdown.monthly.medicalTax)}</td>
                 </tr>
@@ -242,7 +242,7 @@ const SalaryBreakdown: React.FC = () => {
                   <td>Gross Salary</td>
                   <td>{formatCurrency(breakdown.monthly.grossSalary)}</td>
                 </tr>
-                <tr style={{ fontWeight: "bold" }}>
+                <tr style={{ fontWeight: "bold", backgroundColor:"#d6d0d0" }}>
                   <td>Total Deductions</td>
                   <td>{formatCurrency(breakdown.monthly.totalDeductions)}</td>
                 </tr>
